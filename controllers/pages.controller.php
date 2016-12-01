@@ -5,7 +5,7 @@
 
 		public function index()
 		{
-			echo "Сюда будет выводиться список страниц";
+			$this->data['test_content'] = "Сюда будет выводиться список страниц";
 		}
 
 		public function view()
@@ -16,7 +16,7 @@
 			{
 				$alias = strtolower($params[0]);
 
-				echo "Для проверки: сюда будет выведена страница с алиасом " . $alias;
+				$this->data['content'] =  "Для проверки: сюда будет выведена страница с алиасом " . $alias;
 
 			}
 
