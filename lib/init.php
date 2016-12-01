@@ -26,3 +26,7 @@
 			throw new Exception('Ошибка подключения класса ' . $class_name);
 		}
 	}
+
+	function __($key, $default_value = '') {
+		return Lang::get($key, $default_value);
+	}
