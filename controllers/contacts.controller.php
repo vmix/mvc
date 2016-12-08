@@ -21,4 +21,8 @@
 				}
 			}
 		}
+
+		public function admin_index() {
+			$this->data = $this->model->getList();
+		}
 	}
