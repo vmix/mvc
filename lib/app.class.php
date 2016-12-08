@@ -21,6 +21,13 @@
 			$controller_class  = ucfirst(self::$router->getController()) . 'Controller';
 			$controller_method = strtolower(self::$router->getMethodPrefix() . self::$router->getAction());
 
+			$layout = self::$router->getRoute(); // перенесли повыше, так как надо при каждом запросе к роуту admin проверять, имеет ли пользователь на это право
+			if ($layout == 'admin' && Session::get('role') != 'admin') { // если используется роут admin , а пользоветль не admin, то перенаправим пользователя на форму входа (логина)
+				if ($controller_method != 'admin_login') {
+					Router::redirect('/admin/users/login/');
+				}
+			}
+
 			// Вызов метода контроллера
 			$controller_object = new $controller_class();
 
@@ -34,7 +41,7 @@
 			{
 				throw new Exception('Метод ' . $controller_method . ' класса ' . $controller_class . ' не существует');
 			}
-			$layout = self::$router->getRoute();
+
 			$layout_path = VIEWS_PATH . DS . $layout . '.html';
 			$layout_view_object = new View(compact('content'), $layout_path);
 

@@ -8,6 +8,8 @@
 
 //	Session::setFlash('Тест флэш-месседжей');
 
+	session_start();
+
 	App::run($_SERVER['REQUEST_URI']);
 
 //	$test = App::$db->query('select * from pages');

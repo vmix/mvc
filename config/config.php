@@ -20,3 +20,5 @@
 	Config::set('db.user', 'root');
 	Config::set('db.password', '');
 	Config::set('db.db_name', 'mvc');
+
+	Config::set('salt' , 'eriu35356y23yiuio3445');
